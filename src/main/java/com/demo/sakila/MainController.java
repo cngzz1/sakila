@@ -7,6 +7,11 @@ import com.demo.sakila.service.MapService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDate;
+
 @RestController    // This means that this class is a Controller
 @RequestMapping(path="/demo") // This means URL's start with /demo (after Application path)
 public class MainController {
@@ -20,13 +25,14 @@ public class MainController {
     @PostMapping(path="/add") // Map ONLY POST Requests
     public @ResponseBody
     String addNewUser (@RequestParam String name
-            , @RequestParam String email) {
+            , @RequestParam String email, @RequestParam Timestamp timestamp) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
         Actor n = new Actor();
         n.setFirstName("first");
         n.setLastName("abc");
+        n.setLastUpdate(Date.valueOf(LocalDate.now()));
         actorRepository.save(n);
         return "Saved";
     }

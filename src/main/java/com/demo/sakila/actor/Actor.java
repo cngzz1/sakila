@@ -1,10 +1,10 @@
 package com.demo.sakila.actor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.sql.Timestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import javax.persistence.*;
+
+import java.util.Date;
 
 @Entity
 public class Actor {
@@ -15,7 +15,11 @@ public class Actor {
 
     private String firstName;
     private String lastName;
-    private Timestamp lastUpdate;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "modify_date")
+    private Date lastUpdate;
 
 
     public Long getActorId() {
@@ -39,12 +43,13 @@ public class Actor {
         this.lastName = lastName;
     }
 
-    public Timestamp getLastUpdate() {
+    public Date getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Timestamp lastUpdate) {
+    public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
+
 
 }

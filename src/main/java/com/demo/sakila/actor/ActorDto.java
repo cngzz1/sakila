@@ -3,14 +3,15 @@ package com.demo.sakila.actor;
 import org.jetbrains.annotations.Contract;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+
+import java.util.Date;
 import java.util.Objects;
 
 public class ActorDto implements Serializable {
     private final Long actorId;
     private String firstName;
     private String lastName;
-    private Timestamp lastUpdate;
+    private Date lastUpdate;
 
     @Contract(pure = true)
     public ActorDto(Long actorId) {
@@ -18,7 +19,7 @@ public class ActorDto implements Serializable {
     }
 
     @Contract(pure = true)
-    public ActorDto(Long actorId, String firstName, String lastName, Timestamp lastUpdate) {
+    public ActorDto(Long actorId, String firstName, String lastName, Date lastUpdate) {
         this.actorId = actorId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -45,11 +46,11 @@ public class ActorDto implements Serializable {
         this.lastName = lastName;
     }
 
-    public Timestamp getLastUpdate() {
+    public Date getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Timestamp lastUpdate) {
+    public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
@@ -71,10 +72,6 @@ public class ActorDto implements Serializable {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "(" +
-                "actorId = " + actorId + ", " +
-                "firstName = " + firstName + ", " +
-                "lastName = " + lastName + ", " +
-                "lastUpdate = " + lastUpdate + ")";
+        return "%s(actorId = %d, firstName = %s, lastName = %s, lastUpdate = %s)".formatted(getClass().getSimpleName(), actorId, firstName, lastName, lastUpdate);
     }
 }

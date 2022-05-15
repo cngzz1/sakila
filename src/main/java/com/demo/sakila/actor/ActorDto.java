@@ -1,5 +1,7 @@
 package com.demo.sakila.actor;
 
+import org.jetbrains.annotations.Contract;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -10,10 +12,12 @@ public class ActorDto implements Serializable {
     private String lastName;
     private Timestamp lastUpdate;
 
+    @Contract(pure = true)
     public ActorDto(Long actorId) {
         this.actorId = actorId;
     }
 
+    @Contract(pure = true)
     public ActorDto(Long actorId, String firstName, String lastName, Timestamp lastUpdate) {
         this.actorId = actorId;
         this.firstName = firstName;

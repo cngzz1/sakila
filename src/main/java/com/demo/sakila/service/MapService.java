@@ -19,23 +19,23 @@ public class MapService {
     @Autowired
     private ActorRepository userRepository;
 
-    public ActorDto getUserLocation(long id) {
-        return convertToUserLocationDTO(Objects.requireNonNull(userRepository.findById(id).orElse(null)));
+    public ActorDto getActorById(long id) {
+        return convertToActorDto(Objects.requireNonNull(userRepository.findById(id).orElse(null)));
     }
 
-    public List<ActorDto> getAllUsersLocation() {
+    public List<ActorDto> getAllActors() {
         List<ActorDto> list = new CopyOnWriteArrayList<>();
         for (final Actor user : userRepository.findAll()) {
-            final ActorDto userDto = convertToUserLocationDTO(user);
+            final ActorDto userDto = convertToActorDto(user);
             list.add(userDto);
         }
         return list;
     }
 
-    private ActorDto convertToUserLocationDTO(Actor user) {
-        ActorDto userLocationDTO = new ActorDto(user.getActorId());
-        userLocationDTO.setFirstName(user.getFirstName());
-        userLocationDTO.setLastName(user.getLastName());
-        return userLocationDTO;
+    private ActorDto convertToActorDto(Actor actor) {
+        ActorDto actorLocationDTO = new ActorDto(actor.getActorId());
+        actorLocationDTO.setFirstName(actor.getFirstName());
+        actorLocationDTO.setLastName(actor.getLastName());
+        return actorLocationDTO;
     }
 }

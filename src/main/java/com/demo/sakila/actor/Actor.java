@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 public class Actor {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long actorId;
+    private long actorId;
 
 
     private String firstName;
@@ -18,7 +18,7 @@ public class Actor {
     private Timestamp lastUpdate;
 
 
-    public Long getActorId() {
+    public long getActorId() {
         return actorId;
     }
 

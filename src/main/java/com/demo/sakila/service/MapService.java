@@ -3,6 +3,7 @@ package com.demo.sakila.service;
 import com.demo.sakila.actor.Actor;
 import com.demo.sakila.actor.ActorDto;
 import com.demo.sakila.actor.ActorRepository;
+import org.jetbrains.annotations.NotNull;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,23 +20,23 @@ public class MapService {
     @Autowired
     private ActorRepository userRepository;
 
-    public ActorDto getUserLocation(long id) {
+    public ActorDto getActorById(long id) {
         return convertToUserLocationDTO(Objects.requireNonNull(userRepository.findById(id).orElse(null)));
     }
 
-    public List<ActorDto> getAllUsersLocation() {
-        List<ActorDto> list = new CopyOnWriteArrayList<>();
-        for (final Actor user : userRepository.findAll()) {
-            final ActorDto userDto = convertToUserLocationDTO(user);
+    public List<ActorDto> getAllActors() {
+        final List<ActorDto> list = new CopyOnWriteArrayList<>();
+        for (final Actor actor : userRepository.findAll()) {
+            final ActorDto userDto = convertToUserLocationDTO(actor);
             list.add(userDto);
         }
         return list;
     }
 
-    private ActorDto convertToUserLocationDTO(Actor user) {
-        ActorDto userLocationDTO = new ActorDto(user.getActorId());
-        userLocationDTO.setFirstName(user.getFirstName());
-        userLocationDTO.setLastName(user.getLastName());
+    private @NotNull ActorDto convertToUserLocationDTO(@NotNull Actor actor) {
+        final ActorDto userLocationDTO = new ActorDto(actor.getActorId());
+        userLocationDTO.setFirstName(actor.getFirstName());
+        userLocationDTO.setLastName(actor.getLastName());
         return userLocationDTO;
     }
 }

@@ -1,8 +1,8 @@
 package com.demo.sakila.service;
 
-import com.demo.sakila.Actor;
-import com.demo.sakila.ActorDto;
-import com.demo.sakila.ActorRepository;
+import com.demo.sakila.actor.Actor;
+import com.demo.sakila.actor.ActorDto;
+import com.demo.sakila.actor.ActorRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,8 +25,8 @@ public class MapService {
 
     public List<ActorDto> getAllUsersLocation() {
         List<ActorDto> list = new CopyOnWriteArrayList<>();
-        for (Actor user : userRepository.findAll()) {
-            ActorDto userDto = convertToUserLocationDTO(user);
+        for (final Actor user : userRepository.findAll()) {
+            final ActorDto userDto = convertToUserLocationDTO(user);
             list.add(userDto);
         }
         return list;

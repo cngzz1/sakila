@@ -1,4 +1,4 @@
-package com.demo.sakila;
+package com.demo.sakila.actor;
 
 import java.io.Serializable;
 import java.sql.Timestamp;

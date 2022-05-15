@@ -1,4 +1,4 @@
-package com.demo.sakila;
+package com.demo.sakila.actor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

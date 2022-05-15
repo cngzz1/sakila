@@ -1,5 +1,8 @@
 package com.demo.sakila;
 
+import com.demo.sakila.actor.Actor;
+import com.demo.sakila.actor.ActorDto;
+import com.demo.sakila.actor.ActorRepository;
 import com.demo.sakila.service.MapService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

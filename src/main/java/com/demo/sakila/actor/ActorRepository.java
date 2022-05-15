@@ -1,4 +1,4 @@
-package com.demo.sakila;
+package com.demo.sakila.actor;
 
 import org.springframework.data.repository.CrudRepository;
 

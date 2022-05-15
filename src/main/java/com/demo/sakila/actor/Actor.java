@@ -2,18 +2,29 @@ package com.demo.sakila.actor;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import java.util.Date;
 
+
 @Entity
 public class Actor {
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "actor_id")
     private Long actorId;
 
-
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
 
     @UpdateTimestamp

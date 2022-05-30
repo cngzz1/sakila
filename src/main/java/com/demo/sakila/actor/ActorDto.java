@@ -26,7 +26,7 @@ public class ActorDto implements Serializable {
         this.lastUpdate = lastUpdate;
     }
 
-    public Long getActorId() {
+    public long getActorId() {
         return actorId;
     }
 
